@@ -9,7 +9,8 @@ import handleValidationErrors from "./utils/handleValidationErrors.js";
 import cors from 'cors';
 
 mongoose
-    .connect('mongodb+srv://nargiz:123@cluster0.t4fryak.mongodb.net/blog?retryWrites=true&w=majority')
+    .connect(process.env.MONGODB_URI)
+    // mongodb+srv://nargiz:123@cluster0.t4fryak.mongodb.net/blog?retryWrites=true&w=majority
     .then(() => console.log("DB ok"))
     .catch(err => console.log('DB error', err))
 const app = express()
