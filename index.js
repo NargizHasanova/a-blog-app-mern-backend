@@ -7,6 +7,7 @@ import { registerValidation, loginValidation, postCreateValidation } from './val
 import multer from "multer";
 import handleValidationErrors from "./utils/handleValidationErrors.js";
 import cors from 'cors';
+import fs from 'fs';
 
 mongoose
     .connect(process.env.MONGODB_URI)
@@ -21,6 +22,9 @@ app.use("/uploads", express.static("uploads"));
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        if (!fs.existsSync('uploads')) {
+            fs.mkdirSync('uploads');
+        }
         cb(null, "uploads");
     },
     filename: (req, file, cb) => {
