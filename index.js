@@ -49,7 +49,7 @@ app.get("/posts/:id", getSinglePost)
 app.delete("/posts/:id", checkAuth, deletePost)
 app.patch("/posts/:id", checkAuth, postCreateValidation, handleValidationErrors, updatePost)
 
-app.listen(4444, (err) => {
+app.listen(process.env.PORT || 4444, (err) => {
     if (err) {
         return console.log(err);
     }
