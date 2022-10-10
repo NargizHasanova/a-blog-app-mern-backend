@@ -11,7 +11,6 @@ import fs from 'fs';
 
 mongoose
     .connect(process.env.MONGODB_URI)
-    // mongodb+srv://nargiz:123@cluster0.t4fryak.mongodb.net/blog?retryWrites=true&w=majority
     .then(() => console.log("DB ok"))
     .catch(err => console.log('DB error', err))
 const app = express()
